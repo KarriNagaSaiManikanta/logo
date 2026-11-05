@@ -1,0 +1,115 @@
+
+.text-editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.add-text-btn,
+.delete-text-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  background: #1677ff;
+}
+
+.text-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #222;
+  border-radius: 8px;
+}
+
+.text-controls input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.text-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.delete-text-btn {
+  background: #dc3545;
+}
+
+/* TEXT BOX */
+.text-layer-box {
+  position: absolute;
+  display: inline-block;
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+  user-select: none;
+  outline-offset: 5px;
+  box-sizing: border-box;
+}
+
+/* SELECTED TEXT BORDER */
+.text-layer-box:focus-within {
+  outline: 1px dashed #2196f3;
+}
+
+/* TEXT */
+.canvas-text {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+  min-width: max-content;
+  max-width: none;
+  white-space: nowrap;
+  overflow: visible;
+  padding: 3px;
+  cursor: move;
+  user-select: text;
+  touch-action: none;
+  z-index: 5;
+  outline: none;
+  caret-color: white;
+}
+
+/* TEXT HOVER */
+.canvas-text:hover {
+  cursor: move;
+}
+
+/* MOVE HANDLE */
+.text-move-handle {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #2196f3;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: move;
+  touch-action: none;
+  z-index: 30;
+}
+
+/* RESIZE HANDLE */
+.text-resize-handle {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 16px;
+  height: 16px;
+  background: #2196f3;
+  border: 2px solid white;
+  border-radius: 3px;
+  cursor: nwse-resize;
+  touch-action: none;
+  z-index: 30;
+}
