@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -6,24 +7,31 @@
 
 body {
     min-height: 100vh;
-    background: none;
+    background: transparent;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    gap: 20px;
 }
 
+/* Main Logo - 4 x 4 Inches */
 .logo {
-    width: 350px;
-    height: 350px;
+    width: 4in;
+    height: 4in;
+    min-width: 4in;
+    min-height: 4in;
     border-radius: 50%;
     background: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 5px solid #111;
-   
+    flex-shrink: 0;
 }
 
+/* Platinum Outer Ring */
 .platinum-ring {
     width: 320px;
     height: 320px;
@@ -37,6 +45,7 @@ body {
     background: #050505;
 }
 
+/* Hanuman Image */
 .hanuman {
     width: 145px;
     height: 145px;
@@ -50,22 +59,26 @@ body {
         transparent
     );
     margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 .hanuman img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
+    display: block;
 }
 
+/* PAVAN Heading */
 h1 {
-    color: white;
+    color: #fff;
     font-size: 32px;
     letter-spacing: 5px;
     font-weight: 900;
+    text-align: center;
 }
 
+/* Platinum Divider */
 .line {
     width: 160px;
     height: 2px;
@@ -76,84 +89,104 @@ h1 {
         transparent
     );
     margin: 8px 0;
+    flex-shrink: 0;
 }
 
+/* Telugu Heading */
 h2 {
-    color: white;
+    color: #fff;
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 900;
     font-family: "Noto Sans Telugu", sans-serif;
+    text-align: center;
+    white-space: nowrap;
 }
-/* Mobile Responsive Only - Original CSS Unchanged */
+
+/* Download Button */
+button {
+    padding: 12px 25px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+
+/* Mobile Screen - 1 x 1 Inch Logo */
+
+
+
+
+/* Mobile 1x1 Inch - Improved Text & Image Clarity */
 
 @media (max-width: 480px) {
+
     body {
         padding: 10px;
+        gap: 15px;
     }
 
     .logo {
-        width: 280px;
-        height: 280px;
+        width: 1in;
+        height: 1in;
+        min-width: 1in;
+        min-height: 1in;
+        border: 2px solid #111;
     }
 
     .platinum-ring {
-        width: 255px;
-        height: 255px;
+        width: 94%;
+        height: 94%;
+        border: 1.5px solid #c0c0c0;
+        box-shadow: inset 0 0 5px #999;
     }
 
     .hanuman {
-        width: 110px;
-        height: 110px;
-        margin-bottom: 8px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 2px;
+        border: 1px solid #d5d5d5;
+    }
+
+    .hanuman img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     h1 {
-        font-size: 25px;
-        letter-spacing: 3px;
-    }
-
-    .line {
-        width: 130px;
-        margin: 6px 0;
-    }
-
-    h2 {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 1px;
-    }
-}
-
-/* Extra Small Mobile */
-
-@media (max-width: 320px) {
-    .logo {
-        width: 240px;
-        height: 240px;
-    }
-
-    .platinum-ring {
-        width: 218px;
-        height: 218px;
-    }
-
-    .hanuman {
-        width: 90px;
-        height: 90px;
-    }
-
-    h1 {
-        font-size: 21px;
-        letter-spacing: 2px;
+        font-weight: 900;
     }
 
     .line {
-        width: 110px;
+        width: 48px;
+        height: 1px;
+        margin: 2px 0;
     }
 
     h2 {
-        font-size: 10px;
+        font-size: 5.5px;
+        letter-spacing: 0;
+        font-weight: 900;
+        white-space: nowrap;
     }
 }
 
-/*pavan*/
+
+/* PAVAN INSIGHTS TELUGU */
