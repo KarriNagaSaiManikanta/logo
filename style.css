@@ -1,4 +1,26 @@
 
+/* =====================================
+   LOCAL FONTS
+===================================== */
+
+@font-face {
+    font-family: 'Noto Serif Telugu';
+    src: url('./fonts/NotoSerifTelugu-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* =====================================
+   GLOBAL
+===================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,116 +29,465 @@
 
 body {
     min-height: 100vh;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
-    gap: 20px;
+    background: #10131c;
+    color: #fff;
+    font-family: Arial, sans-serif;
 }
 
-/* Main Logo - 4 x 4 Inches */
-.logo {
-    width: 4in;
-    height: 4in;
-    min-width: 4in;
-    min-height: 4in;
-    border-radius: 50%;
+/* =====================================
+   MAIN EDITOR
+===================================== */
+
+.editor {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(300px, 420px);
+    gap: 30px;
+    align-items: start;
+}
+
+.preview-area,
+.controls {
+    background: #1b2230;
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid #303b4c;
+}
+
+.preview-area h2,
+.controls h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 22px;
+}
+
+/* =====================================
+   VIDEO CANVAS 9:16
+===================================== */
+
+.video-canvas {
+    width: min(100%, 360px);
+    aspect-ratio: 9 / 16;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
     background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 5px solid #111;
-    flex-shrink: 0;
-}
-
-/* Platinum Outer Ring */
-.platinum-ring {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    border: 3px solid #c0c0c0;
-    box-shadow: inset 0 0 12px #999;
+    border: 2px solid #566174;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #050505;
 }
 
-/* Hanuman Image */
-.hanuman {
-    width: 145px;
-    height: 145px;
-    border-radius: 50%;
+/* =====================================
+   FOUR IMAGE SECTIONS
+===================================== */
+
+.image-section {
+    position: relative;
+    width: 100%;
+    height: 25%;
+    flex: 0 0 25%;
     overflow: hidden;
-    border: 3px solid #d5d5d5;
-    background: linear-gradient(
-        to right,
-        transparent,
-        #e5e4e2,
-        transparent
-    );
-    margin-bottom: 10px;
-    flex-shrink: 0;
 }
 
-.hanuman img {
+.image-section img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    display: none;
 }
 
-/* PAVAN Heading */
-h1 {
-    color: #fff;
-    font-size: 32px;
-    letter-spacing: 5px;
+/* FIRST IMAGE */
+
+.image-part-1 {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-part-1 #sectionImage1 {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transform-origin: center center;
+    animation: firstImageZoom 2s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes firstImageZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+/* FOURTH IMAGE */
+
+.image-part-4 {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-part-4 #sectionImage4 {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.empty-part {
+    background: transparent;
+}
+
+/* =====================================
+   SUBSCRIBE WATERMARK
+===================================== */
+
+.image-part-4 .subscribe-watermark {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+
+    width: 120px;
+    height: 36px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 4px 8px;
+    box-sizing: border-box;
+
+    background: #E62117;
+    color: #FFFFFF;
+
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 6px;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
     font-weight: 900;
+    letter-spacing: 0.5px;
+
+    line-height: 1;
     text-align: center;
+
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+
+    z-index: 100;
+    white-space: nowrap;
+    overflow: hidden;
+
+    pointer-events: none;
+    animation: subscribePulse 1.5s ease-in-out infinite;
+    transform-origin: center center;
 }
 
-/* Platinum Divider */
-.line {
-    width: 160px;
-    height: 2px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        #e5e4e2,
-        transparent
-    );
-    margin: 8px 0;
+.image-part-4 .subscribe-watermark span {
+    display: inline-block;
     flex-shrink: 0;
+    color: #fff;
+    font-weight: 900;
+    text-shadow: none;
 }
 
-/* Telugu Heading */
-h2 {
-    color: #fff;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: 900;
-    font-family: "Noto Sans Telugu", sans-serif;
+@keyframes subscribePulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.12);
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.8),
+            0 0 22px rgba(230,33,23,0.9);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+}
+
+/* =====================================
+   LOGO OVERLAY
+===================================== */
+
+.logo-overlay {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+
+    width: 75px !important;
+    height: 75px !important;
+
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    display: block;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+
+    animation: logoFloat 3s ease-in-out infinite;
+    will-change: translate;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =====================================
+   PLATINUM CIRCLE
+===================================== */
+
+.platinum-ring {
+    width: 75px !important;
+    height: 75px !important;
+
+    border: 1.5px solid #ffffff;
+    border-radius: 50% !important;
+    background: #D9DEE5;
+
+    box-shadow:
+        0 0 0 1px #ffffff,
+        0 2px 8px rgba(0, 0, 0, 0.3);
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+    overflow: hidden;
+
+    animation: platinumGlow 3s ease-in-out infinite;
+}
+
+/* =====================================
+   HANUMAN IMAGE
+===================================== */
+
+.hanuman {
+    width: 52%;
+    height: 52%;
+    flex: 0 0 52%;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 1px;
+}
+
+.hanuman img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center;
+
+    display: block !important;
+    filter: none !important;
+
+    transform: translateZ(0);
+}
+
+/* =====================================
+   LOGO TEXT
+===================================== */
+
+#mainTitle {
+    display: block !important;
+    width: 100%;
+
+    color: #101820;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+
     text-align: center;
     white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Download Button */
-button {
-    padding: 12px 25px;
-    background: #111;
+#logoLine {
+    width: 70%;
+    height: 1px;
+    min-height: 1px;
+
+    background: #45515e;
+    margin: 2px 0;
+}
+
+#subTitle {
+    display: block !important;
+    width: 100%;
+
+    color: #263442;
+    font-family: 'Noto Serif Telugu', serif;
+
+    font-size: 7px;
+    font-weight: 900;
+    line-height: 1.5;
+
+    text-align: center;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================
+   LOGO ANIMATIONS
+===================================== */
+
+@keyframes logoFloat {
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -4px;
+    }
+}
+
+@keyframes platinumGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 0 1px #ffffff,
+            0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 1.5px #ffffff,
+            0 2px 12px rgba(255, 255, 255, 0.9),
+            0 0 8px rgba(160, 175, 195, 0.6);
+    }
+}
+
+/* =====================================
+   ACCESSIBILITY
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .logo-overlay,
+    .platinum-ring,
+    .subscribe-watermark {
+        animation: none !important;
+    }
+}
+
+/* =====================================
+   CONTROLS
+===================================== */
+
+.controls h3 {
+    margin-top: 25px;
+    margin-bottom: 12px;
+    padding-bottom: 9px;
+
+    color: #00d9ff;
+    font-size: 17px;
+    border-bottom: 1px solid #394355;
+}
+
+.controls label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    color: #dce4ef;
+}
+
+.controls input:not([type="range"]),
+.controls select {
+    width: 100%;
+    min-height: 40px;
+    padding: 10px;
+
+    border: 1px solid #414c60;
+    border-radius: 7px;
+
+    background: #101722;
     color: #fff;
-    border: 1px solid #c0c0c0;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: bold;
+    outline: none;
+}
+
+.controls input[type="file"] {
+    font-size: 12px;
+}
+
+.controls input[type="color"] {
+    height: 42px;
+    padding: 3px;
     cursor: pointer;
 }
 
+.controls input:focus,
+.controls select:focus {
+    border-color: #00d9ff;
+}
+
+/* RANGE SLIDERS */
+
+.controls input[type="range"] {
+    width: 100%;
+    margin: 7px 0;
+    accent-color: #00d9ff;
+    cursor: pointer;
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+button {
+    width: 100%;
+    min-height: 45px;
+
+    margin-top: 13px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #087cf0;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
 button:hover {
-    background: #333;
+    background: #005fc5;
+    transform: translateY(-1px);
 }
 
 button:disabled {
@@ -124,69 +495,285 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Mobile Responsive */
+#exportVideoButton {
+    background: #079b68;
+}
 
-/* Mobile Screen - 1 x 1 Inch Logo */
+#exportVideoButton:hover {
+    background: #067c55;
+}
 
+#resetButton {
+    background: #d94343;
+}
 
+#resetButton:hover {
+    background: #b92e2e;
+}
 
+/* =====================================
+   LOGO ANIMATION OPTIONS
+===================================== */
 
-/* Mobile 1x1 Inch - Improved Text & Image Clarity */
+.animation-rotate {
+    animation: rotateLogo 5s linear infinite;
+}
 
-@media (max-width: 480px) {
-
-    body {
-        padding: 10px;
-        gap: 15px;
+@keyframes rotateLogo {
+    from {
+        rotate: 0deg;
     }
 
-    .logo {
-        width: 1in;
-        height: 1in;
-        min-width: 1in;
-        min-height: 1in;
-        border: 2px solid #111;
-    }
-
-    .platinum-ring {
-        width: 94%;
-        height: 94%;
-        border: 1.5px solid #c0c0c0;
-        box-shadow: inset 0 0 5px #999;
-    }
-
-    .hanuman {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 2px;
-        border: 1px solid #d5d5d5;
-    }
-
-    .hanuman img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    h1 {
-        font-size: 11px;
-        letter-spacing: 1px;
-        font-weight: 900;
-    }
-
-    .line {
-        width: 48px;
-        height: 1px;
-        margin: 2px 0;
-    }
-
-    h2 {
-        font-size: 5.5px;
-        letter-spacing: 0;
-        font-weight: 900;
-        white-space: nowrap;
+    to {
+        rotate: 360deg;
     }
 }
 
+.animation-glow {
+    animation: glowLogo 2s ease-in-out infinite alternate;
+}
 
-/* PAVAN INSIGHTS TELUGU */
+@keyframes glowLogo {
+    from {
+        filter: drop-shadow(0 0 3px white);
+    }
+
+    to {
+        filter: drop-shadow(0 0 18px #00d9ff);
+    }
+}
+
+.animation-slide {
+    animation: slideLogo 2s ease-out both;
+}
+
+@keyframes slideLogo {
+    from {
+        opacity: 0;
+        translate: 0 -60px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.animation-pulse {
+    animation: pulseLogo 2s ease-in-out infinite;
+}
+
+@keyframes pulseLogo {
+    0%, 100% {
+        scale: 1;
+        filter: drop-shadow(0 0 2px white);
+    }
+
+    50% {
+        scale: 1.08;
+        filter: drop-shadow(0 0 15px cyan);
+    }
+}
+
+.animation-shine {
+    animation: shineLogo 2s ease-in-out infinite alternate;
+}
+
+@keyframes shineLogo {
+    from {
+        filter: brightness(1);
+    }
+
+    to {
+        filter: brightness(1.8) drop-shadow(0 0 10px white);
+    }
+}
+
+/* =====================================
+   IMAGE WATERMARK
+===================================== */
+
+.image-watermark {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: max-content;
+    max-width: 95%;
+    padding: 5px 12px;
+
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.65);
+
+    font-family: 'Noto Serif Telugu', serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.4;
+
+    text-align: center;
+    white-space: nowrap;
+
+    text-shadow:
+        1px 1px 2px #000,
+        0 0 4px #000;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 5px;
+
+    z-index: 60;
+    pointer-events: none;
+}
+
+/* =====================================
+   TEXT AREA - 2ND AND 3RD PARTS
+===================================== */
+
+#textArea {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    flex: 0 0 50%;
+    overflow: visible;
+    z-index: 10;
+}
+
+/* COMMON DRAGGABLE TEXT */
+
+.draggable-text {
+    font-family: 'Noto Serif Telugu', serif !important;
+
+    position: absolute;
+    width: 100%;
+    margin: 0;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+
+    z-index: 20;
+}
+
+/* TITLE */
+
+.title {
+    color: red;
+    font-family: 'Noto Serif Telugu', serif !important;
+
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+/* DESCRIPTION */
+
+.description {
+    color: white;
+    font-family: 'Noto Serif Telugu', serif !important;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+/* CTA */
+
+.cta-text {
+    color: lime;
+    font-family: 'Noto Serif Telugu', serif !important;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+/* OPTIONAL ENGLISH TITLE */
+
+.title.english {
+    font-family: 'Bebas Neue', sans-serif !important;
+}
+
+/* DRAGGING */
+
+.draggable-text:active {
+    cursor: grabbing;
+}
+
+/* TEXT AREA */
+
+.text-area {
+    position: relative;
+    overflow: visible;
+    z-index: 10;
+}
+
+/* =====================================
+   TABLET RESPONSIVE
+===================================== */
+
+@media (max-width: 900px) {
+    .editor {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-area,
+    .controls {
+        width: 100%;
+    }
+
+    .video-canvas {
+        width: min(100%, 360px);
+    }
+}
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .preview-area,
+    .controls {
+        padding: 14px;
+    }
+
+    .preview-area h2,
+    .controls h2 {
+        font-size: 19px;
+    }
+
+    .video-canvas {
+        width: min(100%, 320px);
+    }
+
+    .controls h3 {
+        font-size: 16px;
+    }
+
+    .controls label {
+        font-size: 13px;
+    }
+
+    .logo-overlay,
+    .platinum-ring {
+        width: 75px !important;
+        height: 75px !important;
+    }
+}

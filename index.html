@@ -1,32 +1,622 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pavan Insights Telugu Logo</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pavan Dynamic Logo Creator</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="logo">
-    <div class="platinum-ring">
+<div class="editor">
 
-        <div class="hanuman">
-            <img src="./hanuman-face.png" alt="Hanuman">
+    <!-- LIVE VIDEO PREVIEW -->
+    <div class="preview-area">
+
+        <h2>Live Video Preview (9:16)</h2>
+
+        <div class="video-canvas" id="videoCanvas">
+
+            <!-- PART 1: FIRST IMAGE -->
+            <div class="image-section image-part-1">
+
+                <img
+                    id="sectionImage1"
+                    alt="First Image"
+                    style="display: none;"
+                >
+
+            </div>
+
+
+            <!-- PART 2: DYNAMIC TITLE -->
+            <div
+                class="image-section text-part-2"
+                id="textPart2"
+            >
+
+                <h1
+                    class="title draggable-text"
+                    id="previewTitle"
+                ></h1>
+
+            </div>
+
+
+            <!-- PART 3: DESCRIPTION + CTA -->
+            <div class="image-section text-area">
+
+                <p
+                    class="description draggable-text"
+                    id="previewDescription"
+                ></p>
+
+                <p
+                    class="cta-text draggable-text"
+                    id="previewCTA"
+                ></p>
+
+            </div>
+
+
+            <!-- PART 4: FIXED IMAGE + SUBSCRIBE -->
+            <div class="image-section image-part-4">
+
+                <img
+                    id="sectionImage4"
+                    src="./fourthimg.jpeg"
+                    alt="Fourth Image"
+                >
+
+                <div
+                    class="subscribe-watermark"
+                    id="subscribeWatermark"
+                >
+
+                    <span>▶</span>
+
+                    <span id="subscribePreviewText">
+                        SUBSCRIBE
+                    </span>
+
+                    <span>🔔</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGO OVERLAY -->
+            <div
+                class="logo-overlay"
+                id="logoOverlay"
+            >
+
+                <div class="logo" id="logo">
+
+                    <div
+                        class="platinum-ring"
+                        id="platinumRing"
+                    >
+
+                        <div
+                            class="hanuman"
+                            id="hanumanBox"
+                        >
+
+                            <img
+                                id="logoImage"
+                                src="./hanuman-face.png"
+                                alt="Logo Image"
+                            >
+
+                        </div>
+
+
+                        <h1 id="mainTitle">
+                            PAVAN
+                        </h1>
+
+
+                        <div
+                            class="line"
+                            id="logoLine"
+                        ></div>
+
+
+                        <h2 id="subTitle">
+                            మిస్టర్ పవన్ గారు
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <h1>PAVAN</h1>
+    </div>
 
-        <div class="line"></div>
 
-        <h2>పవన్ ఇన్‌సైట్స్ తెలుగు</h2>
+
+    <!-- EDITOR CONTROLS -->
+    <div class="controls">
+
+        <h2>Dynamic Logo Editor</h2>
+
+
+        <!-- IMAGE SECTIONS -->
+        <h3>Four Image Sections</h3>
+
+        <label for="imageInput1">
+            Upload First Image
+        </label>
+
+        <input
+            type="file"
+            id="imageInput1"
+            accept="image/png,image/jpeg,image/webp"
+        >
+
+
+
+        <!-- DYNAMIC TEXT EDITOR -->
+        <h3>Dynamic Text Editor</h3>
+
+
+        <!-- PART 2 TITLE -->
+        <h4>Part 2 - Main Title</h4>
+
+        <label for="titleInput">
+            Enter Title
+        </label>
+
+        <textarea
+            id="titleInput"
+            rows="3"
+            placeholder="Enter your Telugu title"
+        ></textarea>
+
+
+        <label for="titleColor">
+            Title Color
+        </label>
+
+        <input
+            type="color"
+            id="titleColor"
+            value="#ff0000"
+        >
+
+
+        <label for="titleSize">
+            Title Font Size
+        </label>
+
+        <input
+            type="range"
+            id="titleSize"
+            min="15"
+            max="60"
+            value="32"
+        >
+
+
+        <label for="titleAlign">
+            Title Alignment
+        </label>
+
+        <select id="titleAlign">
+
+            <option value="center">Center</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+
+        </select>
+
+
+
+        <!-- PART 3 DESCRIPTION -->
+        <h4>Part 3 - Description</h4>
+
+        <label for="descriptionInput">
+            Enter Description
+        </label>
+
+        <textarea
+            id="descriptionInput"
+            rows="3"
+            placeholder="Enter your Telugu description"
+        ></textarea>
+
+
+        <label for="descriptionColor">
+            Description Color
+        </label>
+
+        <input
+            type="color"
+            id="descriptionColor"
+            value="#ffffff"
+        >
+
+
+        <label for="descriptionSize">
+            Description Font Size
+        </label>
+
+        <input
+            type="range"
+            id="descriptionSize"
+            min="12"
+            max="45"
+            value="23"
+        >
+
+
+        <label for="descriptionAlign">
+            Description Alignment
+        </label>
+
+        <select id="descriptionAlign">
+
+            <option value="center">Center</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+
+        </select>
+
+
+
+        <!-- PART 3 CTA -->
+        <h4>Part 3 - CTA Text</h4>
+
+        <label for="ctaInput">
+            Enter CTA Text
+        </label>
+
+        <textarea
+            id="ctaInput"
+            rows="2"
+            placeholder="Enter your CTA text"
+        ></textarea>
+
+
+        <label for="ctaColor">
+            CTA Color
+        </label>
+
+        <input
+            type="color"
+            id="ctaColor"
+            value="#00ff00"
+        >
+
+
+        <label for="ctaSize">
+            CTA Font Size
+        </label>
+
+        <input
+            type="range"
+            id="ctaSize"
+            min="12"
+            max="35"
+            value="18"
+        >
+
+
+        <label for="ctaAlign">
+            CTA Alignment
+        </label>
+
+        <select id="ctaAlign">
+
+            <option value="center">Center</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+
+        </select>
+
+
+
+        <!-- LOGO TEXT SETTINGS -->
+        <h3>Logo Text Settings</h3>
+
+        <label for="logoTitleInput">
+            Main Title
+        </label>
+
+        <input
+            type="text"
+            id="logoTitleInput"
+            value="PAVAN"
+        >
+
+
+        <label for="subtitleInput">
+            Telugu Subtitle
+        </label>
+
+        <input
+            type="text"
+            id="subtitleInput"
+            value="మిస్టర్ పవన్ గారు"
+        >
+
+
+        <label for="logoTextColor">
+            Logo Text Color
+        </label>
+
+        <input
+            type="color"
+            id="logoTextColor"
+            value="#101820"
+        >
+
+
+        <label for="logoTitleSize">
+            Main Title Size
+        </label>
+
+        <input
+            type="range"
+            id="logoTitleSize"
+            min="5"
+            max="30"
+            value="10"
+        >
+
+
+        <label for="subtitleSize">
+            Subtitle Size
+        </label>
+
+        <input
+            type="range"
+            id="subtitleSize"
+            min="5"
+            max="20"
+            value="7"
+        >
+
+
+
+        <!-- CIRCLE SETTINGS -->
+        <h3>Circle Settings</h3>
+
+        <label for="circleSize">
+            Circle Size
+        </label>
+
+        <input
+            type="range"
+            id="circleSize"
+            min="50"
+            max="150"
+            value="75"
+        >
+
+
+        <label for="borderSize">
+            Circle Border Thickness
+        </label>
+
+        <input
+            type="range"
+            id="borderSize"
+            min="1"
+            max="10"
+            step="0.5"
+            value="1.5"
+        >
+
+
+        <label for="borderColor">
+            Circle Border Color
+        </label>
+
+        <input
+            type="color"
+            id="borderColor"
+            value="#ffffff"
+        >
+
+
+
+        <!-- LOGO POSITION -->
+        <h3>Logo Position &amp; Size</h3>
+
+        <label for="logoSize">
+            Logo Size
+        </label>
+
+        <input
+            type="range"
+            id="logoSize"
+            min="10"
+            max="100"
+            value="30"
+        >
+
+
+        <label for="logoX">
+            Horizontal Position
+        </label>
+
+        <input
+            type="range"
+            id="logoX"
+            min="0"
+            max="100"
+            value="20"
+        >
+
+
+        <label for="logoY">
+            Vertical Position
+        </label>
+
+        <input
+            type="range"
+            id="logoY"
+            min="0"
+            max="100"
+            value="20"
+        >
+
+
+        <label for="logoOpacity">
+            Logo Opacity
+        </label>
+
+        <input
+            type="range"
+            id="logoOpacity"
+            min="10"
+            max="100"
+            value="100"
+        >
+
+
+
+        <!-- LOGO ANIMATION -->
+        <h3>Logo Animation</h3>
+
+        <label for="animationType">
+            Choose Animation
+        </label>
+
+        <select id="animationType">
+
+            <option value="none">No Animation</option>
+            <option value="rotate">Slow Rotation</option>
+            <option value="glow">Glow Effect</option>
+            <option value="slide">Slide In + Fade</option>
+            <option value="pulse">Pulse + Glow</option>
+            <option value="shine">Shine Effect</option>
+
+        </select>
+
+
+        <label for="animationSpeed">
+            Animation Speed
+        </label>
+
+        <input
+            type="range"
+            id="animationSpeed"
+            min="1"
+            max="10"
+            value="4"
+        >
+
+
+
+        <!-- SUBSCRIBE SETTINGS -->
+        <h3>Subscribe Button</h3>
+
+        <label for="subscribeText">
+            Subscribe Text
+        </label>
+
+        <input
+            type="text"
+            id="subscribeText"
+            value="SUBSCRIBE"
+        >
+
+
+        <label for="subscribeWidth">
+            Subscribe Width
+        </label>
+
+        <input
+            type="range"
+            id="subscribeWidth"
+            min="50"
+            max="180"
+            value="95"
+        >
+
+
+        <label for="subscribeHeight">
+            Subscribe Height
+        </label>
+
+        <input
+            type="range"
+            id="subscribeHeight"
+            min="20"
+            max="60"
+            value="28"
+        >
+
+
+        <label for="subscribeColor">
+            Subscribe Color
+        </label>
+
+        <input
+            type="color"
+            id="subscribeColor"
+            value="#E62117"
+        >
+
+
+
+        <!-- EXPORT SETTINGS -->
+        <h3>Export Settings</h3>
+
+        <label for="videoQuality">
+            Video Quality
+        </label>
+
+        <select id="videoQuality">
+
+            <option value="high">High Quality</option>
+            <option value="medium">Medium Quality</option>
+            <option value="low">Low Quality</option>
+
+        </select>
+
+
+        <button id="downloadButton" type="button">
+            Download Logo PNG
+        </button>
+
+
+        <button id="exportVideoButton" type="button">
+            Export Animated Video
+        </button>
+
+
+        <button id="resetButton" type="button">
+            Reset Editor
+        </button>
 
     </div>
-</div><br>
-<button onclick="downloadPNG()">
-    Download Clean PNG
-</button>
+
+</div>
+
+
+
+<!-- HTML TO IMAGE LIBRARY -->
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+
+<!-- MAIN JAVASCRIPT -->
+ <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+
+<script src="/node_modules/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
+
 <script src="script.js"></script>
+
 </body>
 </html>

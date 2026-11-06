@@ -1,0 +1,26 @@
+{
+  "name": "logocreator",
+  "version": "1.0.0",
+  "main": "814.ffmpeg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarriNagaSaiManikanta/logo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarriNagaSaiManikanta/logo/issues"
+  },
+  "homepage": "https://github.com/KarriNagaSaiManikanta/logo#readme",
+  "description": "",
+  "dependencies": {
+    "@ffmpeg/core": "^0.11.0",
+    "@ffmpeg/ffmpeg": "^0.11.6",
+    "express": "^5.3.0"
+  }
+}
